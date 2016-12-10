@@ -4,7 +4,7 @@
 #
 Name     : util-macros
 Version  : 1.19.0
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.0.tar.gz
 Summary  : A set of autoconf project macros for X.Org modules
@@ -29,6 +29,7 @@ data components for the util-macros package.
 Summary: dev components for the util-macros package.
 Group: Development
 Requires: util-macros-data
+Provides: util-macros-devel
 
 %description dev
 dev components for the util-macros package.
@@ -38,10 +39,15 @@ dev components for the util-macros package.
 %setup -q -n util-macros-1.19.0
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -57,5 +63,5 @@ rm -rf %{buildroot}
 
 %files dev
 %defattr(-,root,root,-)
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/xorg-macros.pc
 /usr/share/aclocal/*.m4
