@@ -4,7 +4,7 @@
 #
 Name     : util-macros
 Version  : 1.19.0
-Release  : 10
+Release  : 11
 URL      : http://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.0.tar.gz
 Summary  : A set of autoconf project macros for X.Org modules
