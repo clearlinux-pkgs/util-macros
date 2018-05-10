@@ -6,7 +6,7 @@
 #
 Name     : util-macros
 Version  : 1.19.2
-Release  : 15
+Release  : 16
 URL      : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz
 Source0  : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz
 Source99 : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz.sig
