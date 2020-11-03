@@ -6,10 +6,10 @@
 #
 Name     : util-macros
 Version  : 1.19.2
-Release  : 18
+Release  : 19
 URL      : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz
 Source0  : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz
-Source1 : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz.sig
+Source1  : https://xorg.freedesktop.org/releases/individual/util/util-macros-1.19.2.tar.gz.sig
 Summary  : A set of autoconf project macros for X.Org modules
 Group    : Development/Tools
 License  : MIT
@@ -65,6 +65,7 @@ license components for the util-macros package.
 
 %prep
 %setup -q -n util-macros-1.19.2
+cd %{_builddir}/util-macros-1.19.2
 pushd ..
 cp -a util-macros-1.19.2 build32
 popd
@@ -74,14 +75,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568878249
+export SOURCE_DATE_EPOCH=1604441953
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -100,15 +101,15 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 cd ../build32;
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1568878249
+export SOURCE_DATE_EPOCH=1604441953
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/util-macros
-cp COPYING %{buildroot}/usr/share/package-licenses/util-macros/COPYING
+cp %{_builddir}/util-macros-1.19.2/COPYING %{buildroot}/usr/share/package-licenses/util-macros/f35b1294fe252bc8ec243713fe9e214bbe5c6069
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -139,4 +140,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/util-macros/COPYING
+/usr/share/package-licenses/util-macros/f35b1294fe252bc8ec243713fe9e214bbe5c6069
